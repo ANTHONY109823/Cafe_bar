@@ -58,6 +58,51 @@
         <button class="twitter" onclick="window.location.href='https://x.com/municallao';"></button>
         <button class="tiktok" onclick="window.location.href='https://www.tiktok.com/@munidelcallao?lang=es';"></button>
     </div>
+<script>
+    
+let balance = parseFloat(prompt("¿Cuánto dinero posees en tu cuenta?"));
 
-    </body>
+if (isNaN(balance) || balance < 0) {
+    alert("Ingrese un monto válido.");
+} else {
+    let option;
+    do {
+        option = prompt("Seleccione una opción:\n1. Añadir dinero a mi cuenta\n2. Retirar dinero de mi cuenta\n3. Salir");
+
+        switch (option) {
+            case "1":
+                let deposit = parseFloat(prompt("Ingrese el monto a añadir:"));
+                if (isNaN(deposit) || deposit <= 0) {
+                    alert("Operación errónea");
+                } else {
+                    balance += deposit;
+                    alert(`Tu saldo actual es: ${balance.toFixed(2)}`);
+                }
+                break;
+
+            case "2":
+                let withdraw = parseFloat(prompt("Ingrese el monto a retirar:"));
+                if (isNaN(withdraw) || withdraw <= 0) {
+                    alert("Operación errónea");
+                } else if (withdraw > balance) {
+                    alert("Fondos insuficientes");
+                } else {
+                    balance -= withdraw;
+                    alert(`Tu saldo restante es: ${balance.toFixed(2)}`);
+                }
+                break;
+
+            case "3":
+                alert("Gracias por usar el cajero electrónico");
+                break;
+
+            default:
+                alert("Opción no válida");
+                break;
+        }
+    } while (option !== "3");
+}
+
+</script>
+</body>
 </html>
